@@ -10,3 +10,7 @@ export const BaseURL = 'https://api.douban.com/v2/book/';
  */
 export const ISBNURL = 'isbn/';
 
+/**
+ * 根据关键字或 tag 搜索图书
+ */
+export const SearchURL = 'search';

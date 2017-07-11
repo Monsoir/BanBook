@@ -78,9 +78,13 @@ class BookInfo {
   }
 
   static makeSeriesFrom(rawData) {
-    const seriesID = rawData.series.id ? rawData.series.id : null;
-    const seriesTitle = rawData.series.title ? rawData.series.title : null;
-    return new Series({ id: seriesID, title: seriesTitle });
+    if (rawData.series) {
+      const seriesID = rawData.series.id ? rawData.series.id : null;
+      const seriesTitle = rawData.series.title ? rawData.series.title : null;
+      return new Series({ id: seriesID, title: seriesTitle });
+    }
+
+    return null;
   }
 
   static makeBookContentFrom(rawData) {
