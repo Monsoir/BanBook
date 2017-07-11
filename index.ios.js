@@ -18,10 +18,19 @@ import { BookInfo } from './src/models/models';
 export default class BanBook extends Component {
 
   componentDidMount() {
-    Fetcher.fetch(`${BaseURL}1885170`)
+    // Fetcher.fetchFrom(`${BaseURL}1885170`)
+    // .then((result) => {
+    //   const bookInfo = BookInfo.makeBookInfoFrom(result);
+    //   console.log(bookInfo);
+    // });
+
+    Fetcher.fetchByISBN('9787111187776')
     .then((result) => {
       const bookInfo = BookInfo.makeBookInfoFrom(result);
       console.log(bookInfo);
+    })
+    .catch((e) => {
+      console.log(e);
     });
   }
 
