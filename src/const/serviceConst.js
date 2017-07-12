@@ -46,3 +46,12 @@ export const AnnotationOrder = {
  * 获取某篇笔记的信息
  */
 export const AnnotationURL = 'annotation/';
+
+/**
+ * 获取丛书书目信息
+ */
+export const SerieURL = {
+  serieURL: function(serieID) {
+    return `series/${serieID}/books`;
+  },
+};

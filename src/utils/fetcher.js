@@ -5,6 +5,7 @@ import {
   TagsURL,
   AnnotationsURL,
   AnnotationURL,
+  SerieURL,
 } from '../const/serviceConst';
 
 export default class Fetcher {
@@ -97,6 +98,17 @@ export default class Fetcher {
     };
     const queryParts = this.makeURLSearchParams(params);
     const url = `${BaseURL}${AnnotationURL}${annotationID}?${queryParts}`;
+    return this.fetchFrom(url);
+  }
+
+  /**
+   * 获取丛书书目信息
+   * @param {*丛书 ID} serieID
+   */
+  static fetchSerieInfo(serieID) {
+    if (!serieID) return null;
+
+    const url = `${BaseURL}${SerieURL.serieURL(serieID)}`;
     return this.fetchFrom(url);
   }
 
