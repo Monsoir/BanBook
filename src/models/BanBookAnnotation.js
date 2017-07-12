@@ -40,7 +40,7 @@ class BookAnnotation {
 
   static makeBookAnnotationFrom(rawData) {
     const bookInfo = BookInfo.makeBookInfoFrom(rawData.book);
-    const authorUser = this.makeAuthoruserFrom(rawData);
+    const authorUser = this.makeAuthorUserFrom(rawData.author_user);
     const annotation = this.makeAnnotationFrom(rawData);
     const temp = {
       authorUser: authorUser,
@@ -50,7 +50,7 @@ class BookAnnotation {
     return new BookAnnotation(temp);
   }
 
-  static makeAuthoruserFrom(rawData) {
+  static makeAuthorUserFrom(rawData) {
     const keys = [
       'alt',
       'avatar',

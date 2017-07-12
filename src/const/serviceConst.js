@@ -42,4 +42,7 @@ export const AnnotationOrder = {
   page: 'page', // 按页码先后
 };
 
-
+/**
+ * 获取某篇笔记的信息
+ */
+export const AnnotationURL = 'annotation/';

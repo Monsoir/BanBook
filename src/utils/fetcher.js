@@ -4,6 +4,7 @@ import {
   SearchURL,
   TagsURL,
   AnnotationsURL,
+  AnnotationURL,
 } from '../const/serviceConst';
 
 export default class Fetcher {
@@ -80,6 +81,22 @@ export default class Fetcher {
     const queryParts = this.makeURLSearchParams(params);
     const url = `${BaseURL}${bookID}${AnnotationsURL}?${queryParts}`;
 
+    return this.fetchFrom(url);
+  }
+
+  /**
+   * 获取某篇笔记的信息
+   * @param {*笔记 ID} annotationID
+   * @param {*笔记返回的 content 字段格式} format
+   */
+  static fetchSpecificAnnotation(annotationID, format) {
+    if (!annotationID) return null;
+
+    const params = {
+      format: format,
+    };
+    const queryParts = this.makeURLSearchParams(params);
+    const url = `${BaseURL}${AnnotationURL}${annotationID}?${queryParts}`;
     return this.fetchFrom(url);
   }
 

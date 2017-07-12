@@ -60,13 +60,23 @@ export default class BanBook extends Component {
     //   console.log(e);
     // });
 
-    Fetcher.fetchBookAnnotations('1885170', AnnotationFormat.text, AnnotationOrder.collect, 0)
+    // Fetcher.fetchBookAnnotations('1885170', AnnotationFormat.text, AnnotationOrder.collect, 0)
+    // .then((result) => {
+    //   console.log(result);
+    //   const bookAnnotations = result.annotations.map((value) => {
+    //     return BookAnnotation.makeBookAnnotationFrom(value);
+    //   });
+    //   console.log(bookAnnotations);
+    // })
+    // .catch((e) => {
+    //   console.log(e);
+    // });
+
+    Fetcher.fetchSpecificAnnotation('39449383', AnnotationFormat.text)
     .then((result) => {
       console.log(result);
-      const bookAnnotations = result.annotations.map((value) => {
-        return BookAnnotation.makeBookAnnotationFrom(value);
-      });
-      console.log(bookAnnotations);
+      const annotation = BookAnnotation.makeBookAnnotationFrom(result);
+      console.log(annotation);
     })
     .catch((e) => {
       console.log(e);
