@@ -3,7 +3,7 @@ import {
   ISBNURL,
   SearchURL,
   TagsURL,
-  AnnotationURL,
+  AnnotationsURL,
 } from '../const/serviceConst';
 
 export default class Fetcher {
@@ -78,7 +78,7 @@ export default class Fetcher {
       page: page,
     };
     const queryParts = this.makeURLSearchParams(params);
-    const url = `${BaseURL}${bookID}${AnnotationURL}?${queryParts}`;
+    const url = `${BaseURL}${bookID}${AnnotationsURL}?${queryParts}`;
 
     return this.fetchFrom(url);
   }

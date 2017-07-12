@@ -23,7 +23,7 @@ export const TagsURL = '/tags';
 /**
  * 获取某本图书的所有笔记
  */
-export const AnnotationURL = '/annotations';
+export const AnnotationsURL = '/annotations';
 
 /**
  * 笔记返回content字段格式
@@ -41,3 +41,5 @@ export const AnnotationOrder = {
   rank: 'rank', // 按有用程度，默认值
   page: 'page', // 按页码先后
 };
+
+
