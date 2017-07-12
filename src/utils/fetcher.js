@@ -3,6 +3,7 @@ import {
   ISBNURL,
   SearchURL,
   TagsURL,
+  AnnotationURL,
 } from '../const/serviceConst';
 
 export default class Fetcher {
@@ -58,6 +59,27 @@ export default class Fetcher {
     if (!bookID) return null;
 
     const url = `${BaseURL}${bookID}${TagsURL}`;
+    return this.fetchFrom(url);
+  }
+
+  /**
+   * 获取某本图书的所有笔记
+   * @param {*图书在平台上的 ID} bookID
+   * @param {*笔记返回的 content 字段格式} format
+   * @param {*笔记排序方式} order
+   * @param {*页码} page
+   */
+  static fetchBookAnnotations(bookID, format, order, page) {
+    if (!bookID) return null;
+
+    const params = {
+      format: format,
+      order: order,
+      page: page,
+    };
+    const queryParts = this.makeURLSearchParams(params);
+    const url = `${BaseURL}${bookID}${AnnotationURL}?${queryParts}`;
+
     return this.fetchFrom(url);
   }
 

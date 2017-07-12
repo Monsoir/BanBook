@@ -1,3 +1,5 @@
+import ObjectKeyExchanger from '../utils/ObjectKeyExchanger';
+
 class Author {
   constructor({ names, intro } = {}) {
     this.names = names;
@@ -90,31 +92,22 @@ class BookInfo {
   static makeBookContentFrom(rawData) {
     const keys = ['catalog', 'origin_title', 'title', 'subTitle', 'summary'];
     const objectKeys = ['catalog', 'originTitle', 'title', 'subTitle', 'summary'];
-    const temp = this.makeObjectFrom(rawData, keys, objectKeys);
+    const temp = ObjectKeyExchanger.makeObjectFrom(rawData, keys, objectKeys);
     return new BookContent(temp);
   }
 
   static makeBookConfigurationFrom(rawData) {
     const keys = ['binding', 'isbn10', 'isbn13', 'pages', 'price', 'pubdate', 'publisher', 'translator'];
     const objectKeys = ['binding', 'isbn10', 'isbn13', 'pages', 'price', 'pubDate', 'publisher', 'translator'];
-    const temp = this.makeObjectFrom(rawData, keys, objectKeys);
+    const temp = ObjectKeyExchanger.makeObjectFrom(rawData, keys, objectKeys);
     return new BookConfiguration(temp);
   }
 
   static makeBookPlatformConfigurationFrom(rawData) {
     const keys = ['alt', 'id', 'images', 'rating', 'series', 'tags'];
     const objectKeys = ['platformLink', 'id', 'thumbnails', 'rating', 'series', 'tags'];
-    const temp = this.makeObjectFrom(rawData, keys, objectKeys);
+    const temp = ObjectKeyExchanger.makeObjectFrom(rawData, keys, objectKeys);
     return new BookPlatformConfiguration(temp);
-  }
-
-  static makeObjectFrom(rawData, originalKeys, objectKeys) {
-    const temp = {};
-    originalKeys.forEach((key, index) => {
-      const objectKey = objectKeys[index];
-      temp[objectKey] = rawData[key] ? rawData[key] : null;
-    });
-    return temp;
   }
 }
 

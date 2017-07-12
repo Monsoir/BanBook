@@ -9,11 +9,16 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
 import Fetcher from './src/utils/fetcher';
-import { BaseURL } from './src/const/serviceConst';
-import { BookInfo } from './src/models/models';
+import {
+  BaseURL,
+  AnnotationFormat,
+  AnnotationOrder,
+} from './src/const/serviceConst';
+import { BookInfo } from './src/models/BanBook';
+import { BookAnnotation } from './src/models/BanBookAnnotation';
 
 export default class BanBook extends Component {
 
@@ -47,9 +52,21 @@ export default class BanBook extends Component {
     //   console.log(e);
     // });
 
-    Fetcher.fetchMostTagsOfABook('1885170')
+    // Fetcher.fetchMostTagsOfABook('1885170')
+    // .then((result) => {
+    //   console.log(result);
+    // })
+    // .catch((e) => {
+    //   console.log(e);
+    // });
+
+    Fetcher.fetchBookAnnotations('1885170', AnnotationFormat.text, AnnotationOrder.collect, 0)
     .then((result) => {
       console.log(result);
+      const bookAnnotations = result.annotations.map((value) => {
+        return BookAnnotation.makeBookAnnotationFrom(value);
+      });
+      console.log(bookAnnotations);
     })
     .catch((e) => {
       console.log(e);

@@ -19,3 +19,25 @@ export const SearchURL = 'search';
  * 某个图书中标记最多的标签
  */
 export const TagsURL = '/tags';
+
+/**
+ * 获取某本图书的所有笔记
+ */
+export const AnnotationURL = '/annotations';
+
+/**
+ * 笔记返回content字段格式
+ */
+export const AnnotationFormat = {
+  text: 'text', // 伪标签格式，默认值
+  html: 'html', // HTML 格式
+};
+
+/**
+ * 笔记排序方式
+ */
+export const AnnotationOrder = {
+  collect: 'collect', // 最新笔记
+  rank: 'rank', // 按有用程度，默认值
+  page: 'page', // 按页码先后
+};
