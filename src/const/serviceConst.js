@@ -1,7 +1,7 @@
 // https://developers.douban.com/wiki/?title=book_v2
 
 /**
- * 基础 URL
+ * 基础 URL，获取图书信息
  */
 export const BaseURL = 'https://api.douban.com/v2/book/';
 
