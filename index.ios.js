@@ -33,15 +33,23 @@ export default class BanBook extends Component {
     //   console.log(e);
     // });
 
-    Fetcher.fetchBySearch('算法')
+    // Fetcher.fetchBySearch('算法')
+    // .then((result) => {
+    //   const total = result.total;
+    //   const books = result.books;
+    //   const bookInfos = books.map((value) => {
+    //     return BookInfo.makeBookInfoFrom(value);
+    //   });
+    //   console.log(`total: ${total}`);
+    //   console.log(bookInfos);
+    // })
+    // .catch((e) => {
+    //   console.log(e);
+    // });
+
+    Fetcher.fetchMostTagsOfABook('1885170')
     .then((result) => {
-      const total = result.total;
-      const books = result.books;
-      const bookInfos = books.map((value) => {
-        return BookInfo.makeBookInfoFrom(value);
-      });
-      console.log(`total: ${total}`);
-      console.log(bookInfos);
+      console.log(result);
     })
     .catch((e) => {
       console.log(e);

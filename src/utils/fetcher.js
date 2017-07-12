@@ -1,4 +1,9 @@
-import { BaseURL, ISBNURL, SearchURL } from '../const/serviceConst';
+import {
+  BaseURL,
+  ISBNURL,
+  SearchURL,
+  TagsURL,
+} from '../const/serviceConst';
 
 export default class Fetcher {
   /**
@@ -42,6 +47,17 @@ export default class Fetcher {
     };
     const queryParts = this.makeURLSearchParams(params);
     const url = `${BaseURL}${SearchURL}?${queryParts}`;
+    return this.fetchFrom(url);
+  }
+
+  /**
+   * 某个图书标记最多的标签
+   * @param {*图书在平台上的 ID} bookID
+   */
+  static fetchMostTagsOfABook(bookID) {
+    if (!bookID) return null;
+
+    const url = `${BaseURL}${bookID}${TagsURL}`;
     return this.fetchFrom(url);
   }
 
