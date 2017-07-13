@@ -4,7 +4,7 @@
  * @flow
  */
 
-import './app';
+import './src/views/app/app';
 
 // import React, { Component } from 'react';
 // import {

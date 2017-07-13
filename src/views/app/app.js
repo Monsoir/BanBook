@@ -3,14 +3,14 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
+import AppNavigator from './appNavigator';
 
 export default class BanBook extends Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
-      </View>
+      <AppNavigator />
     );
   }
 }

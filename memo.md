@@ -19,3 +19,15 @@ return null;
 }
 ```
 
+## TextInput
+
+### 设置 TintColor
+
+设置光标颜色属性
+
+`selectionColor`
+
+## 获取窗体尺寸
+
+`var {height, width} = Dimensions.get('window');`
+
