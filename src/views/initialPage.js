@@ -9,9 +9,11 @@ import {
   Button,
   Dimensions,
 } from 'react-native';
-import { getWindowWidth } from '../utils/commonUtils';
+import { connect } from 'react-redux';
+import * as ActionCreators from '../actions/initialPage/actionCreators';
 
-const MainTintColor = '#2AAC5E';
+import { getWindowWidth } from '../utils/commonUtils'; 
+import { MainTintColor } from '../const/commonConst';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,31 +43,32 @@ const styles = StyleSheet.create({
   },
 });
 
+let whose;
 const configureHeader = () => {
-  return (
-    <View style={styles.navigatorHeaderContainer}>
-      <Button
-        style={styles.btnCategory}
-        title={'Book'}
-        color={MainTintColor}
-        onPress={null}
-      />
-      <TextInput
-        style={styles.inputArea}
-        clearButtonMode={'while-editing'}
-        selectionColor={MainTintColor}
-      />
-      <Button
-        style={styles.btnSearch}
-        title={'Search'}
-        color={MainTintColor}
-        onPress={null}
-      />
-    </View>
-  );
-};
+    return (
+      <View style={styles.navigatorHeaderContainer}>
+        <Button
+          style={styles.btnCategory}
+          title={'Book'}
+          color={MainTintColor}
+          onPress={ () => whose.actionChangeCategory() }
+        />
+        <TextInput
+          style={styles.inputArea}
+          clearButtonMode={'while-editing'}
+          selectionColor={MainTintColor}
+        />
+        <Button
+          style={styles.btnSearch}
+          title={'Search'}
+          color={MainTintColor}
+          onPress={ () => whose.actionSearch() }
+        />
+      </View>
+    );
+  };
 
-export default class InitialPage extends PureComponent {
+class InitialPage extends PureComponent {
   static navigationOptions = {
     title: 'Index',
     headerTitle: configureHeader(),
@@ -76,6 +79,19 @@ export default class InitialPage extends PureComponent {
     headerRight: null,
   };
 
+  constructor(props) {
+    super(props);
+    whose = this;
+  }
+
+  actionChangeCategory = () => {
+    this.props.dispatch(ActionCreators.CommencingSearching());
+  };
+
+  actionSearch = () => {
+    this.props.dispatch(ActionCreators.CommencingSearching());
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -83,3 +99,5 @@ export default class InitialPage extends PureComponent {
     );
   }
 }
+
+export default connect()(InitialPage);

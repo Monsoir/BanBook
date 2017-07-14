@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
 } from 'react-native';
+import { Provider } from 'react-redux';
 import AppNavigator from './appNavigator';
+import store from '../../store/store';
 
 export default class BanBook extends Component {
   render() {
     return (
-      <AppNavigator />
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
     );
   }
 }
