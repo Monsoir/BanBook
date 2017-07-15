@@ -6,4 +6,11 @@ const getWindowWidth = () => {
   return Dimensions.get('window').width;
 };
 
-export { getWindowWidth };
+const getWindowHeight = () => {
+  return Dimensions.get('window').height;
+};
+
+export {
+  getWindowWidth,
+  getWindowHeight,
+};

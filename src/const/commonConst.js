@@ -11,6 +11,45 @@ const Category = {
 };
 
 /**
+ * 类别选择的选项
+ */
+const categoryDisplayName = [
+  // 'ID',
+  // 'ISBN',
+  // 'keywordOrTag',
+  // 'bookMostTags',
+  // 'annotations',
+  // 'serie',
+  'ID',
+  'ISBN',
+  '关键字/标签',
+  '书籍最多标签',
+  '笔记',
+  '丛书',
+];
+
+/**
+ * 根据下表返回类别名称
+ * @param {*下标} index
+ */
+function categoryNameRecognizer(index) {
+  if (index < 0 || index > categoryDisplayName.length) return null;
+  return categoryDisplayName[index];
+}
+
+/**
+ * 选择器使用的 key value 合成器
+ */
+function CategoryKeyValue() {
+  return categoryDisplayName.map((value, index) => {
+    return {
+      label: value,
+      value: index,
+    };
+  });
+}
+
+/**
  * 主题颜色，如按钮字体
  */
 const MainTintColor = '#2AAC5E';
@@ -19,15 +58,19 @@ const MainTintColor = '#2AAC5E';
  * 初始状态机
  */
 const initialState = {
-  category: Category.book,
+  categoryIndex: 0,
   modalPickerConfigs: {
+    title: '',
     items: [],
     present: false,
+    selected: 0,
   },
 };
 
 export {
   Category,
+  CategoryKeyValue,
+  categoryNameRecognizer,
   MainTintColor,
   initialState,
 };

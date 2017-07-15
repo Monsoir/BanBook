@@ -7,17 +7,17 @@ import * as ActionType from './actionTypes';
 /**
  * 正在搜索
  */
-const CommencingSearching = (category) => ({
+const CommencingSearching = (categoryIndex) => ({
   type: ActionType.COMMENCINGSEARCHING,
-  category: category,
+  categoryIndex,
 });
 
 /**
  * 结束搜索
  */
-const TerminateSearching = (category) => ({
+const TerminateSearching = (categoryIndex) => ({
   type: ActionType.TERMINATESEARCHING,
-  category: category,
+  categoryIndex,
 });
 
 export {
