@@ -55,6 +55,11 @@ function CategoryKeyValue() {
 const MainTintColor = '#2AAC5E';
 
 /**
+ * 背景颜色
+ */
+const BackgroundColor = '#F6F6F6';
+
+/**
  * 初始状态机
  */
 const initialState = {
@@ -72,5 +77,6 @@ export {
   CategoryKeyValue,
   categoryNameRecognizer,
   MainTintColor,
+  BackgroundColor,
   initialState,
 };

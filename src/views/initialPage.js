@@ -8,14 +8,16 @@ import {
   TextInput,
   Button,
   Dimensions,
+  FlatList,
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as InitialPageActionCreators from '../actions/initialPage/actionCreators';
 import * as ModalPickerActionCreators from '../actions/modalPicker/actionCreators';
 
 import { getWindowWidth } from '../utils/commonUtils'; 
-import { MainTintColor, CategoryKeyValue, categoryNameRecognizer } from '../const/commonConst';
+import { MainTintColor, BackgroundColor, CategoryKeyValue, categoryNameRecognizer } from '../const/commonConst';
 import ModalPicker from './accessory/modalPicker';
+import BanBookCell from './accessory/banBookCell';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,6 +44,10 @@ const styles = StyleSheet.create({
   },
   btnSearch: {
     flex: 1,
+  },
+  list: {
+    flex: 1,
+    backgroundColor: BackgroundColor,
   },
 });
 
@@ -103,10 +109,26 @@ class InitialPage extends PureComponent {
     setParams({ categoryIndex: index });
   };
 
+  generateKey = (item, index) => {
+    return Symbol(`${index}`).toString();
+  };
+
+  renderItems = ({item, index}) => {
+    return (
+      <BanBookCell />
+    );
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <ModalPicker onRequestClose={ (index) => this.actionPickerDismiss(index) } />
+        <FlatList
+          style={styles.list}
+          data={['a', 'b', 'c']}
+          keyExtractor={this.generateKey}
+          renderItem={this.renderItems}
+        />
       </View>
     );
   }
