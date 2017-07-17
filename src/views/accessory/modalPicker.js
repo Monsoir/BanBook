@@ -83,7 +83,7 @@ class ModalPicker extends PureComponent {
       <Modal
         transparent={true}
         visible={this.props.present}
-        animationType={'slide'}
+        animationType={'fade'}
       >
         <TouchableWithoutFeedback
           style={{ flex: 1 }}
