@@ -14,7 +14,7 @@ import {
 import { connect } from 'react-redux';
 import * as ActionCreators from '../../actions/modalPicker/actionCreators';
 
-import { MainTintColor } from '../../const/commonConst';
+import { MainTintColor, BackgroundColor } from '../../const/commonConst';
 import { getWindowWidth, getWindowHeight } from '../../utils/commonUtils';
 
 const styles = StyleSheet.create({
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flexDirection: 'column',
     width: getWindowWidth() * 0.6,
-    backgroundColor: 'rgba(255,255,255,0.5)',
+    backgroundColor: BackgroundColor,
   },
   title: {
     fontSize: 20,

@@ -63,7 +63,11 @@ const BackgroundColor = '#F6F6F6';
  * 初始状态机
  */
 const initialState = {
-  categoryIndex: 0,
+  searchConfigs: {
+    categoryIndex: 0,
+    items: [],
+    error: null,
+  },
   modalPickerConfigs: {
     title: '',
     items: [],

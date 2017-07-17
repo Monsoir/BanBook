@@ -135,8 +135,11 @@ class InitialPage extends PureComponent {
 }
 
 const mapStateToProps = state => {
+  const searchConfigs = state.initialPageReducer.searchConfigs;
   return {
-    categoryIndex: state.categoryIndex,
+    categoryIndex: searchConfigs.categoryIndex,
+    items: searchConfigs.items,
+    error: searchConfigs.error,
   };
 };
 

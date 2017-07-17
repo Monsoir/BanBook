@@ -43,12 +43,16 @@ function updateModalPickerConfigs(state = initialState, action) {
       }
     case ActionType.CONFIRMSELECTION:
       {
-        const configs = state.modalPickerConfigs;
+        const modalPickerconfigs = state.modalPickerConfigs;
+        const searchConfigs = state.searchConfigs;
         return {
           ...state,
-          categoryIndex: action.selected,
+          searchConfigs: {
+            ...searchConfigs,
+            categoryIndex: action.selected,
+          },
           modalPickerConfigs: {
-            ...configs,
+            ...modalPickerconfigs,
             present: false,
           },
         };
