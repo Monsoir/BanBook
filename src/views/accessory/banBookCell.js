@@ -1,6 +1,7 @@
 import React, {
   PureComponent,
 } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   View,
@@ -11,11 +12,12 @@ import {
 } from 'react-native';
 
 import { BackgroundColor } from '../../const/commonConst';
+import { BookInfo } from '../../models/BanBook';
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: BackgroundColor,
+    backgroundColor: '#D9D7D9',
   },
   container: {
     flex: 1,
@@ -25,6 +27,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     backgroundColor: 'white',
+    borderRadius: 10,
   },
   mainInfoArea: {
     flex: 1,
@@ -32,28 +35,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bookMetaDataArea: {
-    flexGrow: 3,
+    flex: 3,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    // backgroundColor: 'pink',
   },
   ratingArea: {
-    flexGrow: 1,
+    flex: 1,
     justifyContent: 'center',
-    // backgroundColor: 'green',
   },
   publishDataArea: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    // backgroundColor: 'purple',
+    marginTop: 10,
   },
   thumbnailArea: {
     justifyContent: 'flex-start',
-    height: 250,
   },
   commonMainInfoFontStyle: {
-    fontSize: 18,
+    fontSize: 15,
+    fontWeight: '100',
     marginTop: 5,
     marginBottom: 5,
     marginLeft: 10,
@@ -61,18 +62,22 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: '900',
+    marginTop: 10,
   },
   subTitle: {
   },
   originTitle: {
+    fontStyle: 'italic',
   },
   authors: {
   },
   commonPublishInfoFontStyle: {
     fontSize: 12,
+    fontWeight: '100',
     marginTop: 5,
-    marginBottom: 5,
+    marginBottom: 10,
     marginLeft: 10,
+    marginRight: 10,
   },
   pubDate: {
   },
@@ -83,26 +88,27 @@ const styles = StyleSheet.create({
   price: {
   },
   rating: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'normal',
     textAlign: 'center',
     color: '#F7A72C',
   },
   thumbnail: {
-    height: 250,
-    borderColor: 'red',
-    borderWidth: 1,
+    height: 300,
     marginLeft: 10,
-    marginRight: 10,
   },
 });
 
-export default class BanBookCell extends PureComponent {
+class BanBookCell extends PureComponent {
+
+  constructor(props) {
+    super(props);
+  }
 
   renderRatingArea = () => {
     return (
       <View style={styles.ratingArea}>
-        <Text style={styles.rating}>9.0</Text>
+        <Text style={styles.rating}>{this.props.item.bookPlatformConfiguration.rating.average}</Text>
       </View>
     );
   };
@@ -110,10 +116,10 @@ export default class BanBookCell extends PureComponent {
   renderBookMetaDataArea = () => {
     return (
       <View style={styles.bookMetaDataArea}>
-        <Text style={[styles.commonMainInfoFontStyle, styles.title]}>title</Text>
-        <Text style={[styles.commonMainInfoFontStyle, styles.subTitle]}>sub title</Text>
-        <Text style={[styles.commonMainInfoFontStyle, styles.originTitle]}>origin title</Text>
-        <Text style={[styles.commonMainInfoFontStyle, styles.authors]}>authors</Text>
+        <Text style={[styles.commonMainInfoFontStyle, styles.title]}>{this.props.item.bookContent.title}</Text>
+        <Text style={[styles.commonMainInfoFontStyle, styles.subTitle]}>{this.props.item.bookContent.subTitle}</Text>
+        <Text style={[styles.commonMainInfoFontStyle, styles.originTitle]}>{this.props.item.bookContent.originTitle}</Text>
+        <Text style={[styles.commonMainInfoFontStyle, styles.authors]}>{this.props.item.author.names}</Text>
       </View>
     );
   };
@@ -130,10 +136,10 @@ export default class BanBookCell extends PureComponent {
   renderPublishDataArea = () => {
     return (
       <View style={styles.publishDataArea}>
-        <Text style={[styles.commonPublishInfoFontStyle, styles.pubDate]}>出版日期：2017-01-01</Text>
-        <Text style={[styles.commonPublishInfoFontStyle, styles.publisher]}>出版社：XXXXXX</Text>
-        <Text style={[styles.commonPublishInfoFontStyle, styles.pages]}>页数：189</Text>
-        <Text style={[styles.commonPublishInfoFontStyle, styles.price]}>定价：34.9</Text>
+        <Text style={[styles.commonPublishInfoFontStyle, styles.pubDate]}>出版日期：{this.props.item.bookConfiguration.pubDate}</Text>
+        <Text style={[styles.commonPublishInfoFontStyle, styles.publisher]}>出版社：{this.props.item.bookConfiguration.publisher}</Text>
+        <Text style={[styles.commonPublishInfoFontStyle, styles.pages]}>页数：{this.props.item.bookConfiguration.pages}</Text>
+        <Text style={[styles.commonPublishInfoFontStyle, styles.price]}>定价：{this.props.item.bookConfiguration.price}</Text>
       </View>
     );
   };
@@ -141,8 +147,12 @@ export default class BanBookCell extends PureComponent {
   renderThumbnailArea = () => {
     return (
       <View style={styles.thumbnailArea}>
-        <Image style={styles.thumbnail}/>
-      </View>
+        <Image
+          style={styles.thumbnail}
+          resizeMode={'cover'}
+          source={{uri: this.props.item.bookPlatformConfiguration.thumbnails.large}}
+        />
+       </View> 
     );
   };
 
@@ -158,3 +168,16 @@ export default class BanBookCell extends PureComponent {
     );
   }
 }
+
+const propTypes = {
+  item: PropTypes.instanceOf(BookInfo),
+};
+
+const defaultProps = {
+  item: null,
+};
+
+BanBookCell.propTypes = propTypes;
+BanBookCell.defaultProps = defaultProps;
+
+export default BanBookCell;

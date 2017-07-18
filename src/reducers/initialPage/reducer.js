@@ -25,6 +25,14 @@ function category(state = initialState, action) {
           error: action.error,
         },
       };
+    case ActionType.UPDATESELECTEDCATEGORY:
+      return {
+        ...state,
+        searchConfigs: {
+          ...searchConfigs,
+          categoryIndex: action.categoryIndex,
+        },
+      };
     default:
       return initialState;
   }

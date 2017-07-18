@@ -11,15 +11,21 @@ const Category = {
 };
 
 /**
+ * 类别枚举
+ */
+const CategoryEnum = {
+  id: 0,
+  isbn: 1,
+  keywordOrTag: 2,
+  bookMostTags: 3,
+  annotations: 4,
+  serie: 5,
+};
+
+/**
  * 类别选择的选项
  */
-const categoryDisplayName = [
-  // 'ID',
-  // 'ISBN',
-  // 'keywordOrTag',
-  // 'bookMostTags',
-  // 'annotations',
-  // 'serie',
+const CategoryDisplayName = [
   'ID',
   'ISBN',
   '关键字/标签',
@@ -29,19 +35,40 @@ const categoryDisplayName = [
 ];
 
 /**
- * 根据下表返回类别名称
- * @param {*下标} index
+ * 根据类别枚举值返回类别名称
+ * @param {*类别枚举值} index
  */
-function categoryNameRecognizer(index) {
-  if (index < 0 || index > categoryDisplayName.length) return null;
-  return categoryDisplayName[index];
+function categoryNameRecognizer(categoryEnum) {
+  if (categoryEnum < 0 || categoryEnum > CategoryDisplayName.length) return null;
+  return CategoryDisplayName[categoryEnum];
+}
+
+/**
+ * 各个类别的对应输入框的 placeholder
+ */
+const CategoryPlaceholders = [
+  '输入书籍在豆瓣上的 ID',
+  '输入书籍的 ISBN 号',
+  '输入书名或关键字',
+  '输入书名',
+  '输入书名',
+  '输入丛书名称',
+];
+
+/**
+ * 根据类别枚举值返回类别 placeholder
+ * @param {*类别枚举值} categoryEnum
+ */
+function categoryPlaceholderRecognizer(categoryEnum) {
+  if (categoryEnum < 0 || categoryEnum > CategoryPlaceholders.length) return null;
+  return CategoryPlaceholders[categoryEnum];
 }
 
 /**
  * 选择器使用的 key value 合成器
  */
 function CategoryKeyValue() {
-  return categoryDisplayName.map((value, index) => {
+  return CategoryDisplayName.map((value, index) => {
     return {
       label: value,
       value: index,
@@ -65,6 +92,7 @@ const BackgroundColor = '#F6F6F6';
 const initialState = {
   searchConfigs: {
     categoryIndex: 0,
+    keyword: '',
     items: [],
     error: null,
   },
@@ -79,7 +107,9 @@ const initialState = {
 export {
   Category,
   CategoryKeyValue,
+  CategoryEnum,
   categoryNameRecognizer,
+  categoryPlaceholderRecognizer,
   MainTintColor,
   BackgroundColor,
   initialState,

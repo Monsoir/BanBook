@@ -18,9 +18,17 @@ const CommencingSearching = (categoryIndex) => ({
 const TerminateSearching = (categoryIndex, items=[], error=null) => ({
   type: ActionType.TERMINATESEARCHING,
   categoryIndex,
+  items,
+  error,
+});
+
+const UpdateSelectedCategory = (categoryIndex = 0) => ({
+  type: ActionType.UPDATESELECTEDCATEGORY,
+  categoryIndex,
 });
 
 export {
   CommencingSearching,
   TerminateSearching,
+  UpdateSelectedCategory,
 };

@@ -5,8 +5,7 @@
 import * as ActionType from '../../actions/modalPicker/actionTypes';
 import { initialState } from '../../const/commonConst';
 
-function updateModalPickerConfigs(state = initialState, action) {
-  console.log(state);
+function updateModalPickerConfigs(state = initialState, action) { 
   switch (action.type) {
     case ActionType.PRESENTMODALPICKER:
       return {
@@ -44,13 +43,8 @@ function updateModalPickerConfigs(state = initialState, action) {
     case ActionType.CONFIRMSELECTION:
       {
         const modalPickerconfigs = state.modalPickerConfigs;
-        const searchConfigs = state.searchConfigs;
         return {
           ...state,
-          searchConfigs: {
-            ...searchConfigs,
-            categoryIndex: action.selected,
-          },
           modalPickerConfigs: {
             ...modalPickerconfigs,
             present: false,
