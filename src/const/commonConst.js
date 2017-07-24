@@ -30,6 +30,12 @@ const CategoryEnum = {
   tag: '#', // 标签
 };
 
+const Instructions = [
+  '@ + 关键词，书籍名称 = 模糊查找',
+  '& + ISBN = 精确查找',
+  '# + 标签名称 = 根据标签查找书籍',
+];
+
 /**
  * 类别选择的选项
  */
@@ -113,11 +119,8 @@ const initialState = {
 };
 
 export {
-  // Category,
-  // CategoryKeyValue,
   CategoryEnum,
-  // categoryNameRecognizer,
-  // categoryPlaceholderRecognizer,
+  Instructions,
   MainTintColor,
   BackgroundColor,
   initialState,

@@ -12,6 +12,7 @@ import {
   FlatList,
   Keyboard,
 } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import * as InitialPageActionCreators from '../../actions/initialPage/actionCreators';
 
@@ -113,8 +114,23 @@ const configureHeader = (state) => {
  * @param {*导航栏参数} state
  */
 const configureHeaderLeft = (state) => {
+
+  const navigationAction = NavigationActions.navigate({
+    routeName: 'SettingScreen',
+    action: NavigationActions.navigate({
+      routeName: 'Setting',
+      params: { onSelectCallback: (index) => {
+        whose.actionInstructionSelected(index);
+      }},
+    }),
+  });
+
   return (
-    <TouchableOpacity style={{marginLeft: 10}}>
+    <TouchableOpacity
+      style={{marginLeft: 10}}
+      /* onPress={() => { whose.props.navigation.navigate('SettingScreen') }} */
+      onPress={() => { whose.props.navigation.dispatch(navigationAction) }}
+    >
       <Image
         style={styles.setting}
         source={require('../../images/setting.png')}
@@ -384,6 +400,7 @@ class InitialPage extends PureComponent {
   };
 
   render() {
+    console.log('find me');
     return (
       <View style={styles.container}>
         <FlatList

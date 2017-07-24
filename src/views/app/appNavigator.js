@@ -2,8 +2,21 @@ import {
   StackNavigator,
 } from 'react-navigation';
 import InitialPage from '../initialPage/initialPage';
+import Setting from '../setting/setting';
 
-const AppNavigator = StackNavigator(
+const SettingNavigator = StackNavigator(
+  {
+    Setting: {
+      screen: Setting,
+    },
+  },
+
+  {
+    initialRouteName: 'Setting',
+  },
+);
+
+const MainNavigator = StackNavigator(
   {
     // 声明各个 screen
     InitialPage: {
@@ -14,6 +27,25 @@ const AppNavigator = StackNavigator(
   // 配置 StackNavigator
   {
     initialRouteName: 'InitialPage',
+  },
+);
+
+const AppNavigator = StackNavigator(
+  {
+    // 声明各个 screen
+    MainScreen: {
+      screen: MainNavigator,
+    },
+    SettingScreen: {
+      screen: SettingNavigator,
+    },
+  },
+
+  // 配置 StackNavigator
+  {
+    headerMode: 'none',
+    initialRouteName: 'MainScreen',
+    mode: 'modal',
   },
 );
 

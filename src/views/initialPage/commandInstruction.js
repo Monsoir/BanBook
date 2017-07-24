@@ -4,6 +4,7 @@ import React, {
 
 import {
   MainTintColor,
+  Instructions,
 } from '../../const/commonConst.js';
 
 import {
@@ -37,12 +38,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
 });
-
-const Instructions = [
-  '@ + 关键词，书籍名称 = 模糊查找',
-  '& + ISBN = 精确查找',
-  '# + 标签名称 = 根据标签查找书籍',
-];
 
 export default class CommandInstructions extends PureComponent {
 

@@ -49,4 +49,9 @@ this.setState({
 });
 ```
 
+## 需要进一步概括
+
+- react navigation 如何返回上一页
+- react navigation 如何做到 push 与 present 同时存在
+- 导航器传值，不使用 redux，如，Setting 页面选取 category
 
