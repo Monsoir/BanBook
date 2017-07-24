@@ -1,7 +1,7 @@
 import {
   StackNavigator,
 } from 'react-navigation';
-import InitialPage from '../initialPage';
+import InitialPage from '../initialPage/initialPage';
 
 const AppNavigator = StackNavigator(
   {

@@ -79,8 +79,6 @@ class ModalPicker extends PureComponent {
   };
 
   render() {
-    console.log('find me');
-    console.log(this.props.selected);
     return (
       <Modal
         transparent={true}
